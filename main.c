@@ -51,9 +51,13 @@ int main(int argc, char **argv)
   t_stack *a;
   t_stack *b;
   
-  if (flagsError(argc, *argv[]) == -1)
+  if (argc == 1)
+    return 1;
+  if (flagsError(argc, *argv[]) == -1 && argc == 1 )
   {
     printError();
     return -1;
   }
+  ft_splitAndHndelError(argc , argv);
+
 }
