@@ -82,3 +82,23 @@ static int	find_max_position(t_stack *b)
 	}
 	return (max_pos);
 }
+
+void	medium(t_stak *a, t_stak *b)
+{
+	int	pos;
+
+	if (!a || !b || a->size < 2)
+		return ;
+	push_chunks(a, b, get_chunk_size(a->size));
+	while (b->size > 0)
+	{
+		pos = find_max_position(b);
+		if (pos <= b->size /2)
+			while (pos -- > 0)
+				rb(b);
+		else
+			while (pos++ < b->size)
+				rrb(b);
+		pa(a, b);
+	}
+}
