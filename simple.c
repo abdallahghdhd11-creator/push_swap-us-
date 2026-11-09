@@ -6,7 +6,7 @@
 /*   By: bmayyas <bmayyas@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 20:57:06 by bmayyas           #+#    #+#             */
-/*   Updated: 2026/11/03 00:37:06 by bmayyas          ###   ########.fr       */
+/*   Updated: 2026/11/09 17:36:15 by bmayyas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	move_min_to_top(t_stack *a)
 void	simple_sort(t_stack *a, t_stack *b)
 {
 	if (!a || !b)
-		return(1);
+		return (1);
 	while (a->size > 0)
 	{
 		move_min_to_top(a);
