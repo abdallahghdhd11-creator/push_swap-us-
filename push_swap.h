@@ -22,4 +22,8 @@ typdef struct stack
   int index;
 } t_stack;
 
+double	compute_disorder(t_stack *a);
+void	simple(t_stack *a, t_stack *b);
+void	medium(t_stack *a, t_stack *b);
+void	complex(t_stack *a, t_stack *b);
 #else
