@@ -1,8 +1,9 @@
 #include "push_swap.h"
 
-void printError()
+int  printError()
 {
   write(2,"Error\n",6);
+  return -1;
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -25,20 +26,35 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-int flagsError(int argc, char **argv)
+int flagsError(int argc, char *argv[] ,int *mood)
 {
   if (argc < 2)
     return 0;
   if (ft_strncmp("--simple",argv[1], 9) == 0)
-    return 1;
+    {
+      *mood = 1;
+      return 1;
+    }
   else if (ft_strncmp("--medium",argv[1], 9) == 0)
+  {
+    *mood = 2;
     return 1;
+  }
   else if (ft_strncmp("--complex", argv[1], 10) == 0)
+  {
+    mood = 3;
     return 1;
+  }
   else if (ft_strncmp("--adaptive" , argv[1], 11) == 0)
+  {
+    *mood = 4;
     return 1;
+  }
   else if (ft_strncmp("--bench", argv[1], 8) == 0)
+  {
+    *mood = 5;
     return 1;
+  }
   
   if (ft_strncmp("--", argv[1], 2) == 0)
 		return (-1);
@@ -50,13 +66,17 @@ int main(int argc, char **argv)
 {
   t_stack *a;
   t_stack *b;
+  int mood = 0;
   
   if (argc == 1)
-    return 1;
-  if (flagsError(argc, *argv[]) == -1 && argc == 1 )
+    return 0;
+  if (flagsError(argc, argv, &mood) == -1)
   {
-    printError();
-    return -1;
+    return (printError());
+  }
+  if (flagsError(argc, argv, &mood) == 1 && argc == 2)
+  {
+    return (printError());
   }
   ft_splitAndHndelError(argc , argv);
 

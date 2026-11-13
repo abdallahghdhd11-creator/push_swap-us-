@@ -1,12 +1,4 @@
-//#include "push_swap.h"
-# include <limits.h>
-# include <stdbool.h>
-# include <stdlib.h>
-# include <unistd.h>
-#include <stdio.h>
-
-//ft_splitAndHndelError(int argc ,char **argv)
-//#{
+#include "push_swap.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -70,7 +62,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (c);
 }
 
-  static size_t	count_words(char const *s)
+static size_t	count_words(char const *s)
 {
 	size_t	count;
 	int		in_word;
@@ -79,8 +71,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	in_word = 0;
 	while (*s)
 	{
-    if (*s == '\"')
-      s++;
 		if (*s != ' ' && in_word == 0)
 		{
 			in_word = 1;
@@ -93,7 +83,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (count);
 }
 
-static void	*free_array(char **array, size_t i)
+void	*free_array(char **array, size_t i)
 {
 	while (i > 0)
 	{
@@ -135,7 +125,7 @@ char	**ft_split(char const *s)
 			if (!result[i])
 				return (free_array(result, i));
 			i++;
-			while (*s && *s != ' ' && *s != '\"')
+			while (*s && *s != ' ')
 				s++;
 		}
 		else
@@ -145,47 +135,45 @@ char	**ft_split(char const *s)
 	return (result);
 
 }
-int main()
+
+static int it_is_digit (char c)
 {
-  char *s = "11 2342 4324 434 3242";
-  ft_split(s);
-  while (*s)
-  {
-    printf("%s\n" , *s);
-    ++s;
-  }
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	size_t	i;
-	int		sum;
+	long 	sum;
 	int		sign;
-  int   x;
 
 	i = 0;
 	sign = 1;
 	sum = 0;
-  x = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
+	
+//مسافات خاصة  /T وهاي القصص
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign *= -1;
 		i++;
 	}
+//اذا تكررت ال- او ال+ اشمط غلط
+	if (!it_is_digit(str[i]))
+		return (2147483648L); 
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		sum = (sum * 10) + (str[i] - '0');
+		if ((sum * sign) > 2147483647 || (sum * sign) < -2147483648)
+			return (2147483648L);
 		i++;
 	}
-  while (str[i])
-  {
-    if (!(str[i] >= '0' && str[i] <= '9')))
-       printError();
-    x++;
-  }
+	if (str[i] != '\0')
+		return (2147483648L);
 	return (sign * sum);
 }
 
