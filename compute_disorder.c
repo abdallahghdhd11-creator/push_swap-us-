@@ -28,7 +28,7 @@ double	compute_disorder(t_stack *a)
 		j = i->next;
 		while (j)
 		{
-			if (i->value > j->value)
+			if (i->data > j->data)
 				mistakes++;
 			j = j->next;
 		}

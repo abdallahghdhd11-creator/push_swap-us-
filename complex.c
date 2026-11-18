@@ -27,38 +27,18 @@ int	get_max_bits(int size)
 	return (bits);
 }
 
-void	rank_indexing(t_stack *a)
-{
-	t_node	*current;
-	t_node	*comp;
-	int	rank;
-
-	current = a->top;
-	while (current != NULL)
-	{
-		rank = 0;
-		comp = a->top;
-		while (comp != NULL)
-		{
-			if (current->value > copm->value)
-				rank ++;
-			comp = comp->next
-		}
-		current->index = rank;
-		curent = current->next;
-	}
-}
-
-void	complex(t_stack *a, t_stak *b)
+void	complex(t_stack *a, t_stack *b)
 {
 	int	bit;
 	int	max_bits;
 	int	i;
 	int	size;
-
+	
+	if (!a || !b || a->size < 2)
+		return ;
+	rank_indexing(a);
 	size = a->size;
 	bit = 0;
-	rank_indexing(a);
 	max_bits = get_max_bits(size);
 	while (max_bits > bit)
 	{

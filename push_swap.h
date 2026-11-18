@@ -32,5 +32,6 @@ double	compute_disorder(t_stack *a);
 void	simple(t_stack *a, t_stack *b);
 void	medium(t_stack *a, t_stack *b);
 void	complex(t_stack *a, t_stack *b);
+void	rank_indexing(t_stack *a);
 
 #endif

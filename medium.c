@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 static int	get_chunk_size(int size)
 {
@@ -53,8 +53,16 @@ static void	push_chunks(t_stack *a, t_stack *b, int chunk)
 			end += chunk;
 			continue ;
 		}
-		while (pos-- > 0)
-			ra(a);
+		if (pos <= a->size / 2)
+		{
+			while (pos-- > 0)
+				ra(a);
+		}
+		else
+		{
+			while (pos++ < a->size)
+				rra(a);
+		}
 		pb(a, b);
 	}
 }
@@ -83,12 +91,13 @@ static int	find_max_position(t_stack *b)
 	return (max_pos);
 }
 
-void	medium(t_stak *a, t_stak *b)
+void	medium(t_stack *a, t_stack *b)
 {
 	int	pos;
 
 	if (!a || !b || a->size < 2)
 		return ;
+	rank_indexing(a);
 	push_chunks(a, b, get_chunk_size(a->size));
 	while (b->size > 0)
 	{

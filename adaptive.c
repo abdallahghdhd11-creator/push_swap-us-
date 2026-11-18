@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void	adaptive(t_stak *a, t_stak *b)
+void	adaptive(t_stack *a, t_stack *b)
 {
 	double	disorder;
 
 	disorder = compute_disorder(a);
 	if (disorder < 0.2)
 		simple(a, b);
-	else if (disorder >= 0.2 && disorder <= 0.5)
+	else if (disorder <= 0.5)
 		medium(a, b);
 	else
 		complex(a, b);
