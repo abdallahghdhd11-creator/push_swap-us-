@@ -32,7 +32,6 @@ char	*ft_strdup(const char *s1)
 	return (dup);
 }
 
-//#}
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*c;
@@ -136,7 +135,7 @@ char	**ft_split(char const *s)
 
 }
 
-static int it_is_digit (char c)
+static int	it_is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
@@ -146,25 +145,20 @@ static int it_is_digit (char c)
 long	ft_atoi(const char *str)
 {
 	size_t	i;
-	long 	sum;
+	long	sum;
 	int		sign;
 
 	i = 0;
 	sign = 1;
 	sum = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	
-//مسافات خاصة  /T وهاي القصص
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign *= -1;
 		i++;
 	}
-//اذا تكررت ال- او ال+ اشمط غلط
 	if (!it_is_digit(str[i]))
-		return (2147483648L); 
+		return (2147483648L);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		sum = (sum * 10) + (str[i] - '0');

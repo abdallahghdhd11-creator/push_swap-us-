@@ -40,9 +40,10 @@ int flagsError(int argc, char *argv[] ,int *mood)
     *mood = 2;
     return 1;
   }
-  else if (ft_strncmp("--complex", argv[1], 10) == 0)
+  else if (ft_strncmp("--complex"comp = comp->next;
+		}, argv[1], 10) == 0)
   {
-    mood = 3;
+    *mood = 3;
     return 1;
   }
   else if (ft_strncmp("--adaptive" , argv[1], 11) == 0)
@@ -78,6 +79,14 @@ int main(int argc, char **argv)
   {
     return (printError());
   }
+  a = in_it_stack();
+  b = in_it_stack();
+
+
   ft_splitAndHndelError(argc , argv);
 
+
+  free_stack(a);
+  free_stack(b);
+  return (0);
 }

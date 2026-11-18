@@ -19,6 +19,13 @@ typedef struct s_stack
 	t_node	*top;
 }	t_stack;
 
+void free_stack(t_stack *s);
+t_stack *in_it_stack(void);
+int push_bottom(t_stack *s , int data);
+int	parse_args(int argc, char **argv, t_stack *a, int start_idx);
+static void free_split(char **arr);
+int sandwesh_duple(t_stack *s);
+
 //Utils
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
