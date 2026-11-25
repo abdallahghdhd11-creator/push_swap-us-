@@ -30,17 +30,17 @@ int flagsError(int argc, char *argv[] ,int *mood)
 {
   if (argc < 2)
     return 0;
-  if (ft_strncmp("--simple",argv[1], 9) == 0)
+  if (ft_strncmp("--simple" , argv[1], 9) == 0)
     {
       *mood = 1;
       return 1;
     }
-  else if (ft_strncmp("--medium",argv[1], 9) == 0)
+  else if (ft_strncmp("--medium" , argv[1], 9) == 0)
   {
     *mood = 2;
     return 1;
   }
-  else if (ft_strncmp("--complex"comp = comp->next;
+  else if (ft_strncmp("--complex"  , comp = comp->next;
 		}, argv[1], 10) == 0)
   {
     *mood = 3;
