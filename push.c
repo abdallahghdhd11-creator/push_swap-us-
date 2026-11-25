@@ -29,11 +29,19 @@ static int push_s(t_stack *src ,t_stack *des)
 void	pa(t_stack *a, t_stack *b)
 {
 	if (push_s(b, a))
+	{
 		write(1, "pa\n", 3);
+		if (a && a->ops)
+			a->ops[3]++;
+	}
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
 	if (push_s(a, b))
+	{
 		write(1, "pb\n", 3);
+		if (a && a->ops)
+      a->ops[4]++;
+	}
 }

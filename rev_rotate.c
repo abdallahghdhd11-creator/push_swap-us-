@@ -21,22 +21,33 @@ static int	rev_rotate(t_stack *s)
 void	rra(t_stack *a)
 {
 	if (rev_rotate(a))
+	{
 		write(1, "rra\n", 4);
+		if (a && a->ops)
+			a->ops[8]++;
+	}
 }
 
 void	rrb(t_stack *b)
 {
 	if (rev_rotate(b))
+	{
 		write(1, "rrb\n", 4);
+		if (b && b->ops)
+			b->ops[9]++;
+	}
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
-	int	r1;
-	int	r2;
+	int	moved;
 
-	r1 = rev_rotate(a);
-	r2 = rev_rotate(b);
-	if (r1 == 1 || r2 == 1)
+	moved = rev_rotate(a);
+	moved += rev_rotate(b);
+	if (moved > 0)
+	{
 		write(1, "rrr\n", 4);
+		if (a && a->ops)
+			a->ops[10]++;
+	}
 }
